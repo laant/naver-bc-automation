@@ -7,7 +7,7 @@ export async function POST(
   try {
     localRequest(request);
     const b = await readBody(request);
-    return ok(await enqueue((await params).id, "SCRAPE", b.scheduledAt));
+    return ok(await enqueue((await params).id, "GENERATE", b.scheduledAt));
   } catch (e) {
     return fail(e);
   }

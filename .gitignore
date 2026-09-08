@@ -43,3 +43,7 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+*.tsbuildinfo
+playwright-report/
+test-results/

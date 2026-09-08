@@ -4,40 +4,43 @@
   "description": "네이버 쇼핑 커넥트(브랜드커넥트) 자동 블로그 포스팅 도구",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --hostname 127.0.0.1",
     "lint": "eslint",
     "login": "npx ts-node --project tsconfig.scripts.json scripts/login.ts",
     "publish": "npx ts-node --project tsconfig.scripts.json scripts/simple-agent.ts",
     "db:studio": "npx prisma studio",
-    "db:push": "npx prisma db push"
+    "worker": "ts-node --project tsconfig.scripts.json scripts/worker.ts",
+    "test": "ts-node -r tsconfig-paths/register --project tsconfig.scripts.json tests/core.ts",
+    "test:browser": "ts-node --project tsconfig.scripts.json tests/browser.ts",
+    "setup": "node scripts/setup.mjs",
+    "db:migrate": "prisma migrate deploy"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "@prisma/client": "^5.22.0",
-    "date-fns": "^4.1.0",
     "dotenv": "^17.2.3",
-    "next": "16.1.3",
+    "next": "^16.3.4",
     "openai": "^6.16.0",
     "playwright": "^1.57.0",
-    "playwright-extra": "^4.3.6",
     "prisma": "^5.22.0",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "uuid": "^13.0.0"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/uuid": "^10.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.1.3",
+    "eslint-config-next": "^16.3.4",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=20.9.0"
   }
 }
